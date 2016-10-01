@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>cours home page</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>Gestion des notes</h1>
+
+        <section class="eleves">
+            <h2>Eleves</h2>
+            <table>
+
+              <?php foreach ($eleves as $value): ?>
+                  <tr>
+                    <td><a href="eleve.php?idEleve=<?= $value['id']?>"><?= $value['nom'] ?>   <?= $value['prenom'] ?></a></td>
+                    <td><i class="fa fa-pencil fa-lg"></i></td>
+                    <td><i class="fa fa-trash-o fa-lg"></i></td>
+                  <tr>
+              <?php endforeach; ?>
+
+            </table>
+        </section>
+
+        <section class="matieres">
+            <h2>Matières</h2>
+            <table>
+
+              <?php foreach ($matieres as $value): ?>
+                  <tr>
+                    <td><?= $value['libelle'] ?></td>
+                    <td><i class="fa fa-pencil fa-lg"></i></td>
+                    <td><i class="fa fa-trash-o fa-lg"></i></td>
+                  <tr>
+              <?php endforeach; ?>
+
+            </table>
+        </section>
+
+        <section class="saisie-note">
+            <h2>Ajout d'une notes</h2>
+            <form action="add.php" method="post">
+                <select name="eleve">
+                    <option value="">-selection élève-</option>
+                    <?php foreach ($eleves as $value): ?>
+                        <option value="<?= $value['id'] ?>" <?= selected($value['id'], $id_lastEleve) ?>><?= $value['nom'] ?> <?= $value['prenom'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <select name="matiere">
+                    <option value="">-selection matière-</option>
+                    <?php foreach ($matieres as $value): ?>
+                        <option value="<?= $value['id'] ?>" <?= selected($value['id'], $id_lastMatiere) ?>><?= $value['libelle'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <input type="text" name="note" placeholder="Saisir la note" />
+                <input type="submit" name="submit" value="Ajouter" />
+            </form>
+            <?php if (!empty($error_message)): ?>
+                <?php foreach ($error_message as $value): ?>
+                    <p class="error_message"><?= $value ?><p>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </section>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script src="js/index.js"></script>
+
+    </body>
+    </html>

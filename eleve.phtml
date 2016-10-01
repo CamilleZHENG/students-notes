@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>notes des eleves</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1><?= $eleve['nom']?> <?= $eleve['prenom']?></h1>
+        <?php if (empty($error_message)): ?>
+            <section class="notes-eleve">
+              <h2>Notes</h2>
+              <table>
+                <tr>
+                    <th>Matière</th>
+                    <th>Note</th>
+                </tr>
+                <?php foreach ($all_notes as $value) : ?>
+                  <tr>
+                      <td><?= $value['libelle'] ?></td>
+                      <td><?= number_format($value['value'],2) ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              </table>
+            </section>
+            <section class="moyennes-eleve">
+              <h2>Moyenne</h2>
+              <table>
+                <tr>
+                    <th>Matière</th>
+                    <th>Moyenne</th>
+                </tr>
+                  <?php foreach ($all_moyennes as $value): ?>
+                    <tr>
+                        <td><?= $value['libelle'] ?></td>
+                        <td><?= number_format($value['moyenne'],2) ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                <tr>
+                    <td><span>Générale</span></td>
+                    <td><span><?= number_format($general_moyen,2) ?></span></td>
+                </tr>
+
+              </table>
+            </section>
+      <?php else: ?>
+          <p class="aucune-note"><?= $error_message ?></p>
+      <?php endif; ?>
+      <p class="home-page"><a href="index.php">homePage</a></p>
+
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+a{
+  text-decoration: none;
+}
+h1{
+  text-align: center;
+}
+section.eleves, section.matieres, section.notes-eleve, section.moyennes-eleve,section.notes-eleve, section.moyennes-eleve{
+  width: 20%;
+  margin-left: 20%;
+}
+section.eleves table, section.matieres table, section.notes-eleve table, section.moyennes-eleve table{
+  width: 100%;
+  text-align: center;
+}
+section.moyennes-eleve span{
+  font-weight: bold;
+}
+.aucune-note{
+  text-align: center;
+  margin-top: 100px;
+}
+section.saisie-note{
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-left: 10%;
+}
+section.saisie-note form input[type="number"]{
+  width: 150px;
+}
+.error_message{
+  color: red;
+}
+.champs-a-saisir{
+  border:2px solid red;
+}
+.home-page{
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left: 20%;
+}
